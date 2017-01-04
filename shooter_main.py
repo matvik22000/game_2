@@ -113,14 +113,11 @@ class Label(QtGui.QWidget):
         self.buy_3 = QtGui.QPushButton("buy", self)
         self.buy_3.setGeometry(510, 180, 80, 20)
         self.buy_3.setDisabled(writer.str2bool_file("ammo"))
-        self.np = QtGui.QPushButton("next page", self)
-        self.np.setGeometry(600, 0, 100, 40)
         self.buy_4 = QtGui.QPushButton("buy", self)
         self.buy_4.setDisabled(writer.str2bool_file("portal"))
         self.buy_4.setGeometry(520, 430, 80, 20)
         self.buy_5.setGeometry(510, 320, 80, 20)
         self.buy_5.setDisabled(writer.str2bool_file("hp"))
-        self.connect(self.np, QtCore.SIGNAL("clicked()"), self.np_f)
         self.connect(self.buy_1, QtCore.SIGNAL("clicked()"), self.buy1)
         self.connect(self.buy_2, QtCore.SIGNAL("clicked()"), self.buy2)
         self.connect(self.buy_3, QtCore.SIGNAL("clicked()"), self.buy3)
@@ -150,16 +147,20 @@ class Label(QtGui.QWidget):
             self.label_s.move(0 - self.label_s.x(), 0 - self.label_s.y())
             self.label_s.move(200, 100)
             self.label_s.setPixmap(QtGui.QPixmap("sp_s_3.png"))
+        self.buy_5.setDisabled(writer.str2bool_file("portal"))
+        self.buy_4.setDisabled(writer.str2bool_file("hp"))
+        self.buy_1.setDisabled(writer.str2bool_file("armor"))
+        self.buy_2.setDisabled(writer.str2bool_file("motor"))
+        self.buy_3.setDisabled(writer.str2bool_file("ammo"))
         QtGui.QWidget.show(self)
     def buy5(self):
         writer.buy(file_oblect="portal", cost=2000, txt="True")
-        self.buy_5.setDisabled(writer.str2bool_file("hp"))
+        self.buy_5.setDisabled(writer.str2bool_file("portal"))
     def buy4(self):
         writer.buy(file_oblect="hp", cost=2000, txt="True")
-        self.buy_4.setDisabled(writer.str2bool_file("portal"))
+        self.buy_4.setDisabled(writer.str2bool_file("hp"))
 
-    def np_f(self):
-        mod_shop_2.show()
+
     def buy1(self):
         writer.buy(file_oblect="armor", cost=2000, txt="True")
         self.buy_1.setDisabled(writer.str2bool_file("armor"))
@@ -272,7 +273,7 @@ class Console(QtGui.QWidget):
         QtGui.QWidget.close(self)
 
     def console(self):
-        text, ok = QtGui.QInputDialog.getText(self, 'input cheat', "Input cheat.", )
+        text, ok = QtGui.QInputDialog.getText(self, 'Input command', "Input command.", )
         if ok:
             if text == "matvik22000":
                 text2, ok = QtGui.QInputDialog.getText(self, 'Input number', 'input number')
@@ -318,10 +319,10 @@ class Console(QtGui.QWidget):
                         writer.write_file("portal", "False")
                         writer.write_file("reghp", "False")
                         writer.write_file("regarmor", "False")
-                    if text3 != "rockets" and text3 != "money" and text3 != "all" and text3 != "modules":
+                    if text3 != "rockets" and text3 != "money" and text3 != "all" and text3 != "modules" :
                         easygui.critical("wrong command")
 
-        if text != "matvik22000" and text != "clear":
+        if text != "matvik22000" and text != "clear" and text != "m03":
             easygui.critical("wrong command")
 
     def command_list(self):

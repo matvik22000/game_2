@@ -162,7 +162,7 @@ def shooter(rocket, delay):
                 self.y_size = 15
 
             def shoot(self):
-                self.y -= 15
+                self.y -= 10
                 screen.blit(ammo_p, [self.x, self.y])
 
         class SpaceShip():
@@ -245,7 +245,6 @@ def shooter(rocket, delay):
                             ammo_P = Ammo()
                             ammo_list.append(ammo_P)
                     if event.key == pygame.K_p:
-                        print "1"
                         p = True
                     if event.key == pygame.K_UP:
                         up = True
@@ -266,7 +265,7 @@ def shooter(rocket, delay):
             if p:
                pause = not pause
             if not pause:
-                print col_5
+
                 writer.write("paused", screen, 250, 350, color = [col_5, col_5, col_5])
                 col_5 += col_change_5
                 if col_5 >= 255:
@@ -275,7 +274,7 @@ def shooter(rocket, delay):
                 if col_5 <= 0:
                     col_5 = 0
                     col_change_5 = -col_change_5
-            print pause
+
             if pause:
                 portal -= 1
                 if portal <= 0:
@@ -777,7 +776,7 @@ def tutorial(rocket, delay):
                             ammo_P = Ammo()
                             ammo_list.append(ammo_P)
                     if event.key == pygame.K_p:
-                        print "1"
+
                         p = True
                     if event.key == pygame.K_UP:
                         up = True
@@ -798,7 +797,7 @@ def tutorial(rocket, delay):
             if p:
                pause = not pause
             if not pause:
-                print col_5
+
                 writer.write("paused", screen, 250, 350, color = [col_5, col_5, col_5])
                 col_5 += col_change_5
                 if col_5 >= 255:
@@ -807,7 +806,7 @@ def tutorial(rocket, delay):
                 if col_5 <= 0:
                     col_5 = 0
                     col_change_5 = -col_change_5
-            print pause
+
             if pause:
                 portal -= 1
                 if portal <= 0:
