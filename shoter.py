@@ -164,7 +164,9 @@ def shooter(rocket, delay):
             def shoot(self):
                 self.y -= 10
                 screen.blit(ammo_p, [self.x, self.y])
-
+            def draw(self):
+                self.y -= 10
+                screen.blit(ammo_p, [self.x, self.y])
         class SpaceShip():
             def __init__(self):
                 self.x = 230
@@ -689,6 +691,9 @@ def tutorial(rocket, delay):
                 self.y_size = 15
 
             def shoot(self):
+                self.y -= 15
+                screen.blit(ammo_p, [self.x, self.y])
+            def draw(self):
                 self.y -= 15
                 screen.blit(ammo_p, [self.x, self.y])
 
